@@ -45,6 +45,7 @@ const Navbar = () => {
                     <li><a href="#admission" className="text-white font-semibold hover:text-blue-200 transition duration-300">Admission</a></li>
                     <li><a href="#mycollege" className="text-white font-semibold hover:text-blue-200 transition duration-300">My College</a></li>
                 </ul>
+                <button className="hidden md:block bg-white text-blue-500 py-2 px-4 rounded-full hover:bg-blue-200 transition duration-300">Sign Up</button>
                 </nav>
             </div>
         </div>
