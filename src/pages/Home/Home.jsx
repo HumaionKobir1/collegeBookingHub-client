@@ -1,10 +1,10 @@
-import Banner from "./Banner/Banner";
+import CollageCard from "./CollageCard/CollageCard";
 import Gallery from "./Gallery/Gallery";
 
 const Home = () => {
     return (
         <div>
-            <Banner></Banner>
+            <CollageCard></CollageCard>
             <Gallery></Gallery>
         </div>
     );
