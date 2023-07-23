@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 
 const Cards = ({data}) => {
-    const {name, image, admission_dates, events, research_history, sports} = data;
+    const {_id, name, image, admission_dates, events, research_history, sports} = data;
     return (
         <div className="max-w-md mx-auto rounded-lg overflow-hidden shadow-md bg-white">
             <img src={image} alt={name} className="w-full h-56 object-cover object-center" />
@@ -11,9 +12,13 @@ const Cards = ({data}) => {
                 <h3 className="text-lg font-semibold mb-2">Events</h3>
                 <ul className="list-disc list-inside">
                     {events.map((event, index) => (
-                    <li key={index}>{event}</li>
+                    <li key={index}>
+                        <strong>{event.name}</strong> - {event.date}
+                        <p className="text-gray-600">{event.description}</p>
+                    </li>
                     ))}
                 </ul>
+
                 </div>
                 <p className="text-gray-600 mb-4">{research_history}</p>
                 <div>
@@ -24,10 +29,11 @@ const Cards = ({data}) => {
                     ))}
                 </ul>
                 </div>
-                <button
+                
+                <Link to={`/details/${_id}`}><button
                 className="block mx-auto mt-4 px-4 py-2 bg-indigo-500 hover:bg-indigo-700 text-white rounded-lg focus:outline-none">
                     Details
-                </button>
+                </button></Link>
             </div>
         </div>
     );
