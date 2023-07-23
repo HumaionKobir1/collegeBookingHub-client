@@ -7,7 +7,10 @@ const Navbar = () => {
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
+        console.log(isMobileMenuOpen); // Debugging statement
     };
+
+    
 
     return (
         <div className="bg-blue-500">
@@ -30,12 +33,9 @@ const Navbar = () => {
                 </div>
 
                 {/* Mobile Dropdown Menu */}
-                <div className={`md:hidden absolute top-14 right-0 bg-blue-500 mt-2 rounded-md shadow-lg transition-width duration-300 ${isMobileMenuOpen ? "w-full" : "w-0"}`}>
+                <div className={`md:hidden absolute top-14 right-0 bg-blue-500 mt-2 rounded-md shadow-lg transition-width duration-300 ${isMobileMenuOpen ? "w-full" : "w-96"}`}>
                     <ul className="flex flex-col space-y-2 p-4">
-                    <Link to='/'><li><a href="#home" className="text-white block hover:text-blue-200">Home</a></li></Link>
-                    <Link to='/collage'><li><a href="#colleges" className="text-white block hover:text-blue-200">Colleges</a></li></Link>
-                    <Link to='/admission'><li><a href="#admission" className="text-white block hover:text-blue-200">Admission</a></li></Link>
-                    <Link to='/myCollage'><li><a href="#mycollege" className="text-white block hover:text-blue-200">My College</a></li></Link>
+                        <h1>humaion kobir</h1>
                     </ul>
                 </div>
 
