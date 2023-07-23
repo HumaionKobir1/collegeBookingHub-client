@@ -1,5 +1,6 @@
 import { useState } from "react";
 import logo from '../../images/bookinglogo.png'
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -14,10 +15,10 @@ const Navbar = () => {
                 <nav className="flex items-center justify-between relative">
 
                 {/* Logo and Name */}
-                <div className="flex items-center">
+                <Link to='/' className="flex items-center">
                     <img className="h-10 w-10 mr-2" src={logo} alt="Logo" />
                     <span className="text-white font-bold text-xl">CollageBookingHub</span>
-                </div>
+                </Link>
 
                 {/* Mobile Menu Button */}
                 <div className="md:hidden flex items-center">
@@ -31,19 +32,19 @@ const Navbar = () => {
                 {/* Mobile Dropdown Menu */}
                 <div className={`md:hidden absolute top-14 right-0 bg-blue-500 mt-2 rounded-md shadow-lg transition-width duration-300 ${isMobileMenuOpen ? "w-full" : "w-0"}`}>
                     <ul className="flex flex-col space-y-2 p-4">
-                    <li><a href="#home" className="text-white block hover:text-blue-200">Home</a></li>
-                    <li><a href="#colleges" className="text-white block hover:text-blue-200">Colleges</a></li>
-                    <li><a href="#admission" className="text-white block hover:text-blue-200">Admission</a></li>
-                    <li><a href="#mycollege" className="text-white block hover:text-blue-200">My College</a></li>
+                    <Link to='/'><li><a href="#home" className="text-white block hover:text-blue-200">Home</a></li></Link>
+                    <Link to='/collage'><li><a href="#colleges" className="text-white block hover:text-blue-200">Colleges</a></li></Link>
+                    <Link to='/admission'><li><a href="#admission" className="text-white block hover:text-blue-200">Admission</a></li></Link>
+                    <Link to='/myCollage'><li><a href="#mycollege" className="text-white block hover:text-blue-200">My College</a></li></Link>
                     </ul>
                 </div>
 
                 {/* Desktop Navigation Links */}
                 <ul className="hidden md:flex space-x-8">
-                    <li><a href="#home" className="text-white font-semibold hover:text-blue-200 transition duration-300">Home</a></li>
-                    <li><a href="#colleges" className="text-white font-semibold hover:text-blue-200 transition duration-300">Colleges</a></li>
-                    <li><a href="#admission" className="text-white font-semibold hover:text-blue-200 transition duration-300">Admission</a></li>
-                    <li><a href="#mycollege" className="text-white font-semibold hover:text-blue-200 transition duration-300">My College</a></li>
+                    <Link to='/'><li><a href="#home" className="text-white font-semibold hover:text-blue-200 transition duration-300">Home</a></li></Link>
+                    <Link to='/collage'><li><a href="#colleges" className="text-white font-semibold hover:text-blue-200 transition duration-300">Colleges</a></li></Link>
+                    <Link to='/admission'><li><a href="#admission" className="text-white font-semibold hover:text-blue-200 transition duration-300">Admission</a></li></Link>
+                    <Link to='/myCollage'><li><a href="#mycollege" className="text-white font-semibold hover:text-blue-200 transition duration-300">My College</a></li></Link>
                 </ul>
                 <button className="hidden md:block bg-white text-blue-500 py-2 px-4 rounded-full hover:bg-blue-200 transition duration-300">Sign Up</button>
                 </nav>

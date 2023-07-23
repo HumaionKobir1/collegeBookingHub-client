@@ -71,7 +71,7 @@ const CollageCard = () => {
                     </div>
                 </div>
             </div>
-            <div className="mt-10 md:w-[1400px] w-full mx-auto p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div className=" md:w-[1400px] w-full mx-auto p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 
 
                 {query === ''
