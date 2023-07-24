@@ -75,7 +75,7 @@ const CollageCard = () => {
                 
 
                 {query === ''
-                    ? collegesData.slice(0, 9).map(data => (
+                    ? collegesData.slice(0, 6).map(data => (
                         <Cards key={data._id} data={data}></Cards>
                         ))
                     : filteredColleges
