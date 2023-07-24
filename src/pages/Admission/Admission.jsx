@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { TbFidgetSpinner } from 'react-icons/tb';
-
+const img_hosting_token = import.meta.env.VITE_IMGBB_KEY;
 
 
 const Admission = () => {
@@ -32,8 +33,45 @@ const Admission = () => {
     const number = form.number.value;
     const date = form.date.value;
     const address = form.address.value;
+    const subject = form.subject.value;
     const image = form.image.files[0]
-    console.log(name, email, number, date, address, image)
+    const formData = new FormData();
+    formData.append('image', image);
+    const url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
+    fetch(url, {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+      const admissionData = {
+        image: data.data.display_url,
+        name,
+        email,
+        subject,
+        number,
+        date,
+        address,
+      }
+      fetch(`http://localhost:5000/admission`, {
+        method: 'POST',
+        headers: {
+          'content-type' : 'application/json'
+        },
+        body: JSON.stringify(admissionData)
+      })
+      .then(res => res.json())
+      .then(data => {
+        toast.success('Add Class Successfully')
+        console.log(data)
+      })
+      .catch(err => console.log(err))
+  
+      console.log(admissionData)
+      setLoading(false);
+    })
+    
+
   };
 
   return (
@@ -59,7 +97,7 @@ const Admission = () => {
       <div className="flex flex-wrap mb-4 md:w-[1400px] w-full mx-auto p-2">
         {colleges.slice(0, 7).map((collegeName) => (
           <div
-            key={collegeName}
+            key={collegeName._id}
             className={`bg-white rounded-lg p-4  font-semibold text-blue-500 cursor-pointer mr-4 mb-4 ${
               college === collegeName ? 'border-2 border-blue-500' : ''
             }`}
