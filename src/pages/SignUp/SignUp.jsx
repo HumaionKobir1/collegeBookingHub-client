@@ -88,11 +88,11 @@ const SignUp = () => {
 }
 
   return (
-    <div className='flex justify-center items-center min-h-screen'>
-      <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
+    <div className='p-2 bg-gradient-to-r from-blue-500 to-purple-500'>
+      <div className='w-[1000px] p-6 rounded-md sm:p-10 justify-center mx-auto'>
         <div className='mb-8 text-center'>
           <h1 className='my-3 text-4xl font-bold'>Sign Up</h1>
-          <p className='text-sm text-gray-400'>Welcome to AirCNC</p>
+          <p className='text-gray-100'>welcome to Our Website</p>
         </div>
         <form
         onSubmit={handleSubmit}
@@ -160,7 +160,7 @@ const SignUp = () => {
           <div>
             <button
               type='submit'
-              className='bg-rose-500 w-full rounded-md py-3 text-white'
+              className='bg-blue-800 hover:bg-blue-700  w-full rounded-md py-3 text-white'
             >
                 {loading?<TbFidgetSpinner size={24} className='mx-auto animate-spin'></TbFidgetSpinner> : 'Continue'}
               
@@ -169,21 +169,21 @@ const SignUp = () => {
         </form>
         <div className='flex items-center pt-4 space-x-1'>
           <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
-          <p className='px-3 text-sm dark:text-gray-400'>
+          <p className='px-3 text-sm  dark:text-gray-400'>
             Signup with social accounts
           </p>
           <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
         </div>
-        <div onClick={handleGoogleSignIn} className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
+        <div onClick={handleGoogleSignIn} className='flex justify-center hover:bg-blue-500 items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
           <FcGoogle size={32} />
 
           <p>Continue with Google</p>
         </div>
-        <p className='px-6 text-sm text-center text-gray-400'>
+        <p className='px-6 text-sm text-center text-gray-200'>
           Already have an account?{' '}
           <Link
             to='/login'
-            className='hover:underline hover:text-rose-500 text-gray-600'
+            className='hover:underline hover:text-rose-500 text-rose-800'
           >
             Login
           </Link>
