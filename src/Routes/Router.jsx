@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home";
 import ViewDetails from "../shared/ViewDetails/ViewDetails";
 import SignUp from "../pages/SignUp/SignUp";
 import Login from "../pages/Login/Login";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
         },
         {
           path: 'details/:id',
-          element: <ViewDetails></ViewDetails>,
+          element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
           loader: ({params})=> fetch(`http://localhost:5000/collage/${params.id}`)
         },
         {
