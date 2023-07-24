@@ -1,55 +1,157 @@
-import { useState } from "react";
+import  { useContext, useState } from 'react'
 import logo from '../../images/bookinglogo.png'
-import { Link } from "react-router-dom";
+import { Link, } from 'react-router-dom'
+import {
+  Bars3Icon,
+  XMarkIcon,
+} from '@heroicons/react/24/solid'
+import { AuthContext } from '../../providers/AuthProvider';
+import ActiveLink from '../../ActiveLink/ActiveLink';
+
 
 const Navbar = () => {
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-    const toggleMobileMenu = () => {
-        setIsMobileMenuOpen(!isMobileMenuOpen);
-        console.log(isMobileMenuOpen); // Debugging statement
-    };
-
+    const {user,  logOut} = useContext(AuthContext);
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
     
+    const handleSignOut = () => {
+        logOut()
+        .then(()=>{})
+        .catch(error =>{
+            console.log(error.message);
+        })
+    }
 
     return (
-        <div className="bg-blue-500">
-            <div className="md:px-20 px-2 py-6">
-                <nav className="flex items-center justify-between relative">
-
-                {/* Logo and Name */}
-                <Link to='/' className="flex items-center">
+        <div className='bg-blue-500'>
+        <div className=' md:px-20 px-2 py-6'>
+            <div className='relative flex items-center justify-between'>
+                {/* Logo Section */}
+                <Link to='/' className='inline-flex items-center'>
                     <img className="h-10 w-10 mr-2" src={logo} alt="Logo" />
                     <span className="text-white font-bold text-xl">CollageBookingHub</span>
                 </Link>
 
-                {/* Mobile Menu Button */}
-                <div className="md:hidden flex items-center">
-                    <button className="text-white" onClick={toggleMobileMenu}>
-                    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                    </button>
-                </div>
-
-                {/* Mobile Dropdown Menu */}
-                <div className={`md:hidden absolute top-14 right-0 bg-blue-500 mt-2 rounded-md shadow-lg transition-width duration-300 ${isMobileMenuOpen ? "w-full" : "w-96"}`}>
-                    <ul className="flex flex-col space-y-2 p-4">
-                        <h1>humaion kobir</h1>
-                    </ul>
-                </div>
-
-                {/* Desktop Navigation Links */}
-                <ul className="hidden md:flex space-x-8">
-                    <Link to='/'><li><a href="#home" className="text-white font-semibold hover:text-blue-200 transition duration-300">Home</a></li></Link>
-                    <Link to='/collage'><li><a href="#colleges" className="text-white font-semibold hover:text-blue-200 transition duration-300">Colleges</a></li></Link>
-                    <Link to='/admission'><li><a href="#admission" className="text-white font-semibold hover:text-blue-200 transition duration-300">Admission</a></li></Link>
-                    <Link to='/myCollage'><li><a href="#mycollege" className="text-white font-semibold hover:text-blue-200 transition duration-300">My College</a></li></Link>
+                {/* Nav Items Section */}
+                <ul className='items-center hidden space-x-8 text-white lg:flex text-lg'>
+                <li>
+                    <ActiveLink to='/'>Home</ActiveLink>
+                </li>
+                <li>
+                    <ActiveLink to="/collage">Collage</ActiveLink>
+                </li>
+                <li>
+                    <ActiveLink to="/admission">Admission</ActiveLink>
+                </li>
+                <li>
+                    <ActiveLink to="/myCollage">My Collage</ActiveLink>
+                </li>
+                {/* <li>
+                    <NavLink
+                    to='/login'
+                    className={({ isActive }) => (isActive ? 'active' : 'default')}
+                    >
+                    Login
+                    </NavLink>
+                </li> */}
+                
                 </ul>
-                <button className="hidden md:block bg-white text-blue-500 py-2 px-4 rounded-full hover:bg-blue-200 transition duration-300">Sign Up</button>
-                </nav>
+
+                <div className='flex  justify-center items-center gap-3'>
+                    {user && <img className='w-11 h-11 rounded-full' src={user.photoURL} title={user.displayName}  alt="" /> }
+                    
+                    {user ? 
+                    <button onClick={handleSignOut} className='hidden md:block bg-white text-blue-500 py-2 px-4 rounded-full hover:bg-blue-200 transition duration-300'>Logout</button> :
+
+                    <Link to='/login' className='hidden md:block '>
+                    <button className="hidden md:block bg-white text-blue-500 py-2 px-4 rounded-full hover:bg-blue-200 transition duration-300">LogIn</button>
+                    </Link>
+                    }
+                </div>
+
+                {/* Mobile Navbar Section */}
+                <div className='lg:hidden '>
+                {/* Dropdown Open Button */}
+                <button
+                    aria-label='Open Menu'
+                    title='Open Menu'
+                    onClick={() => setIsMenuOpen(true)}
+                >
+                    <Bars3Icon className='w-8 text-white' />
+                </button>
+                {isMenuOpen && (
+                    <div className='absolute top-0 left-0 w-full z-10 '>
+                    <div className='p-5 bg-blue-500 text-white border rounded shadow-sm'>
+                        {/* Logo & Button section */}
+                        <div className='flex items-center justify-between mb-4'>
+                        <div>
+                            <Link to='/' className='inline-flex items-center'>
+                                <img src={logo} alt="" />
+                            </Link>
+                        </div>
+                        {/* Dropdown menu close button */}
+                        <div>
+                            <button
+                            aria-label='Close Menu'
+                            title='Close Menu'
+                            onClick={() => setIsMenuOpen(false)}
+                            >
+                            <XMarkIcon className='w-8 text-white' />
+                            </button>
+                        </div>
+                        </div>
+                        {/* Mobile Nav Items Section */}
+                        <nav>
+                        <ul className='space-y-4 text-white'>
+                            <li>
+                            <Link to='/' className='default'>
+                                Home
+                            </Link>
+                            </li>
+                            <li>
+                            <Link
+                                to='/collage'
+                                className='font-medium tracking-wide  transition-colors duration-200 hover:text-blue-400'
+                            >
+                                Collage
+                            </Link>
+                            </li>
+                            <li>
+                            <Link
+                                to='/admission'
+                                className='font-medium tracking-wide  transition-colors duration-200 hover:text-blue-400'
+                            >
+                                Admission
+                            </Link>
+                            </li>
+                            <li>
+                            <Link
+                                to='/myCollage'
+                                className='font-medium tracking-wide  transition-colors duration-200 hover:text-blue-400'
+                            >
+                                My Collage
+                            </Link>
+                            </li>
+                            <li>
+                            {user ? 
+                            <button onClick={handleSignOut} className='bg-white text-blue-500 py-2 px-4 rounded-full hover:bg-blue-200 transition duration-300'>Logout</button> :
+
+                            <Link to='/login' className='inline-flex md:block items-center'>
+                            <button className='bg-white text-blue-500 py-2 px-4 rounded-full hover:bg-blue-200 transition duration-300'>Login</button>
+                            </Link>
+                            }
+                            </li>
+                        </ul>
+                        <Link to='/register' className={user? 'hidden': 'inline-flex mt-5 hidden'}>
+                            <button className='bg-white text-blue-500 py-2 px-4 rounded-full hover:bg-blue-200 transition duration-300'>Register</button>
+                        </Link>
+                        </nav>
+                    </div>
+                    </div>
+                )}
+                </div>
             </div>
         </div>
+    </div>
     );
 };
 
