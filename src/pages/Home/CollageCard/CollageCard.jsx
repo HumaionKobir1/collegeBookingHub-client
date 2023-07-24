@@ -41,7 +41,7 @@ const CollageCard = () => {
         <div>
             <div className=" banner relative bg-gradient-to-r from-blue-500 to-purple-500 py-12">
                 <div
-                    className="absolute top-0 left-0 right-0 bottom-0 opacity-50 bg-black"
+                    className="absolute top-0 left-0 right-0 bottom-0 opacity-40 bg-black"
                 />
                 <div
                     className="absolute top-0 left-0 right-0 bottom-0"

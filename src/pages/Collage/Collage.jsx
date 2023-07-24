@@ -21,13 +21,13 @@ const Collage = () => {
         <div>
             <div className=" banner relative bg-gradient-to-r from-blue-500 to-purple-500 py-12">
                 <div
-                    className="absolute top-0 left-0 right-0 bottom-0 opacity-50 bg-black"
+                    className="absolute top-0 left-0 right-0 bottom-0 opacity-40 bg-black"
                 />
                 <div
                     className="absolute top-0 left-0 right-0 bottom-0"
                     
                 />
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 lg:py-10 relative">
                     <div className="text-center">
                         <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">
                             All University & Collage

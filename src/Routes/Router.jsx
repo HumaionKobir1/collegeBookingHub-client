@@ -6,6 +6,7 @@ import SignUp from "../pages/SignUp/SignUp";
 import Login from "../pages/Login/Login";
 import PrivateRoute from "./PrivateRoute";
 import Collage from "../pages/Collage/Collage";
+import Admission from "../pages/Admission/Admission";
 
 const router = createBrowserRouter([
     {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         {
           path: '/collage',
           element: <Collage></Collage>
+        },
+        {
+          path: '/admission',
+          element: <Admission></Admission>
         }
       ]
     },

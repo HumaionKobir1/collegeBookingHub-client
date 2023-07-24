@@ -68,7 +68,7 @@ const Login = () => {
 
   return (
     <div className='p-2 bg-gradient-to-r from-blue-500 to-purple-500'>
-      <div className='w-[1000px] p-6 rounded-md sm:p-10 justify-center mx-auto'>
+      <div className='md:w-[1000px] w-full p-2 rounded-md sm:p-10 justify-center mx-auto'>
         <div className='mb-8 text-center'>
           <h1 className='my-3 text-4xl font-bold'>Log In</h1>
           <p className='text-sm text-gray-100'>
